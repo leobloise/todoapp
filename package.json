@@ -1,0 +1,24 @@
+{
+  "name": "basictodo",
+  "version": "1.0.0",
+  "description": "It's an original to do, no one has ever done it\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C app, no one has ever done it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsnd --ignore-watch node-modules/* --transpile-only --respawn src/server.ts"
+  },
+  "keywords": [
+    "To",
+    "Do",
+    "app"
+  ],
+  "author": "Leonardo C. S. Bloise",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.6.0",
+    "express": "^4.17.1",
+    "ts-node-dev": "^1.0.0-pre.58",
+    "typescript": "^3.9.7"
+  }
+}

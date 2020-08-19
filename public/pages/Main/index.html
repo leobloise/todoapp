@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta name="author" content="Leonardo C. S. Bloise">
+    <meta name="description" content="Simple to do app">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type = "text/css" href="../../css/global.css">
+    <link rel="stylesheet" type = "text/css" href="../../pages/Main/styles.css">
+    <title>Página Inicial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="test"></div>
+    <header class="header">
+        <div class="header_content container">
+            <h1> To Do App</h1>
+        </div>
+    </header>
+    <main class="mainContent">
+        <div class="mainContent_content container">
+            <section class="formarea">
+                <div class="hideMe">
+                    <form id="formchore">
+                        <div class="input-block">
+                            <label for="title"> Title </label>
+                            <input type="text" name="title" required id="title">
+                        </div>
+                        <div class="input-block">
+                            <label for="activity"> Activity </label>
+                            <select id="activity_select" name="activity">
+                                <option value="" selected disabled hidden>Select an option</option>
+                            </select>
+                        </div>
+                        <div class="input-block">
+                            <label for="timeFrom"> From </label>
+                            <input type="time" name="timeFrom" required id="timeFrom">
+                        </div>
+                        <div class="input-block">
+                            <label for="timeDayFrom"> From Date </label>
+                            <input type="date" name="timeDayFrom" required id="timeDayFrom">
+                        </div>
+                        <div class="input-block">
+                            <label for="timeTo"> To </label>
+                            <input type="time" name="timeTo" required id="timeTo">
+                        </div>
+                        <div class="input-block">
+                            <label for="timeDayTo"> To Date </label>
+                            <input type="date" name="timeDayTo" required id="timeDayTo">
+                        </div>
+                        <div class="input-block">
+                            <label for="description"> Description </label>
+                            <textarea name="description" id="description"></textarea>
+                        </div>
+                        <input type="button" id="clear" value="Apagar todos">
+                        <input type="submit" id="register" value="Cadastrar">
+                    </form>
+                </div>
+                <button class="hide"type="button">Esconder</button>
+            </section>
+            <section class="cardarea">
+               
+            </section>
+        </div>
+    </main>
+    <script>
+        window.$ = document.querySelector.bind(document);
+        
+    </script>
+      <script src="../../pages/Main/model/ChoreCards.js"></script>
+      <script src="../../pages/Main/service/ProxyFactory.js"></script>
+      <script src="../../pages/Main/service/HttpService.js"></script>
+      <script src="../../pages/Main/model/Chore.js"></script>
+      <script src="../../pages/Main/model/Message.js"></script>
+      <script src="../../pages/Main/view/View.js"></script>
+      <script src="../../pages/Main/view/MessageView.js"></script>
+      <script src="../../pages/Main/view/CardsView.js"></script>
+      <script src="../../pages/Main/controller/ChoreController.js"></script>
+      <script src="../../pages/Main/index.js"></script>
+      
+      
+</body>
+</html>
