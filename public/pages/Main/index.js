@@ -1,5 +1,10 @@
 const select = $('#activity_select');
-const activities = ['Study', 'Work Out', 'Relax', 'Other']
+const activities = ['Study', 'Work Out', 'Relax', 'Other'];
+
+let form = $('#formchore');
+let hideElement = $('.hide');
+let hideMe = $('.hideMe');
+
 let count = 0;
 let cc = new ChoreController();
 
@@ -15,17 +20,18 @@ activities.forEach(activity => {
 
 $('#formchore').addEventListener('submit', cc.RegisterNewChore.bind(cc))
 $('#clear').addEventListener('click', cc.clearAll.bind(cc));
-$('.hide').addEventListener('click', (e) => {
+
+hideElement.addEventListener('click', (e) => {
     if(count == 0) {
-        $('.hide').innerHTML = 'Mostrar'
-        $('.hideMe').classList.add('displaynone');
+        hideElement.innerHTML = 'Mostrar'
+        hideMe.classList.add('displaynone');
         $('html').classList.add('overflowxnone')
         count++;
         return;
     }
 
-    $('.hide').innerHTML = 'Esconder'
-    $('.hideMe').classList.remove('displaynone');
+    hideElement.innerHTML = 'Esconder'
+    hideMe.classList.remove('displaynone');
     setTimeout(()=>$('html').classList.remove('overflowxnone'), 1000);
     count = 0;
     return;

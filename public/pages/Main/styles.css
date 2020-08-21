@@ -175,6 +175,21 @@
     color: white;
 }
 
+.alert {
+    background-color: #6272a4;
+    opacity: .8;
+    height: 4rem;
+    text-align: center;
+    line-height: 4rem;
+    margin-top: 1rem;
+    font-family: Poppins;
+    font-size: 2rem;
+    color: white;
+    border-radius: 2rem;
+    padding: .5rem;
+    display: none;
+}
+
 @media (min-width: 800px) {
     .formarea {
         justify-content: unset;

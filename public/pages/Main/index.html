@@ -11,13 +11,14 @@
     <title>Página Inicial</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="test"></div>
     <header class="header">
         <div class="header_content container">
             <h1> To Do App</h1>
         </div>
     </header>
+    <div class="alert container">
+        
+    </div>
     <main class="mainContent">
         <div class="mainContent_content container">
             <section class="formarea">
@@ -59,15 +60,14 @@
                 </div>
                 <button class="hide"type="button">Esconder</button>
             </section>
-            <section class="cardarea">
-               
+            <section class="cardarea"> 
             </section>
         </div>
     </main>
     <script>
         window.$ = document.querySelector.bind(document);
-        
     </script>
+      <script src="../../pages/Main/helpers/StringUtils.js"></script>
       <script src="../../pages/Main/model/ChoreCards.js"></script>
       <script src="../../pages/Main/service/ProxyFactory.js"></script>
       <script src="../../pages/Main/service/HttpService.js"></script>
@@ -76,9 +76,8 @@
       <script src="../../pages/Main/view/View.js"></script>
       <script src="../../pages/Main/view/MessageView.js"></script>
       <script src="../../pages/Main/view/CardsView.js"></script>
+      <script src="../../pages/Main/model/Time.js"></script>
       <script src="../../pages/Main/controller/ChoreController.js"></script>
       <script src="../../pages/Main/index.js"></script>
-      
-      
 </body>
 </html>

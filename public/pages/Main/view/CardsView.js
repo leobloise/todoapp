@@ -10,7 +10,7 @@ class CardsView extends View{
                         <header class="cardheader">
                             <div class="cardheader_content">
                                 <h1> ${model.title} </h1>
-                                <span> ${model.timeDayFrom.getDate()}/${model.timeDayFrom.getMonth()}/${model.timeDayFrom.getFullYear()} - ${model.timeFrom} => ${model.timeDayTo.getDate()}/${model.timeDayTo.getMonth()}/${model.timeDayTo.getFullYear()}  - ${model.timeTo}</span><br>
+                                <span> ${model.formattedDateFrom} - ${model.hourAndMinutesFrom} => ${model.formattedDateTo} - ${model.hourAndMinutesTo} </span><br>
                                 <span> ${model.activity} </span>
                             </div>
                         </header>
