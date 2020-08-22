@@ -1,4 +1,6 @@
-class CardsView extends View{
+import View from './View.js'
+
+export default class CardsView extends View{
     constructor(element) {
         super(element);
     }

@@ -2,7 +2,7 @@
  * @constructor (month, day, year, hour, minute)
  */
 
-class Time {
+export default class Time {
 
     constructor(month, day, year, hour, minute) {
         this._month = this._verifyMonth(month);

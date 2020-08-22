@@ -1,8 +1,8 @@
-class ProxyFactory {
+export default class ProxyFactory {
+
     constructor() {
         throw new Error('You should not do it');
     }
-
 
     static create(object, view, traps) {
         ;

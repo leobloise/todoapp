@@ -1,4 +1,7 @@
-class Chore {
+import StringUtils from '../helpers/StringUtils.js'
+import Time from '../model/Time.js';
+
+export default class Chore {
 
         constructor(temptitle, activity, timeFrom, timeDayFrom, timeTo, timeDayTo, description) {
             this._timeTo;

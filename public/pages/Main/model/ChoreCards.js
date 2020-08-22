@@ -1,4 +1,4 @@
-class ChoreCards {
+export default class ChoreCards {
 
     constructor() {
         this._chores = [];

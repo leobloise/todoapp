@@ -1,3 +1,5 @@
+import ChoreController from './controller/ChoreController.js';
+
 const select = $('#activity_select');
 const activities = ['Study', 'Work Out', 'Relax', 'Other'];
 
