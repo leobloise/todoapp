@@ -5,7 +5,7 @@ const routes = express.Router();
 
 routes.get('/', (req: Request, res: Response) => {
     res.status(200);
-    res.sendFile(path.resolve('public', 'pages', 'Main', 'index.html'))
+    res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'))
 })
 
 

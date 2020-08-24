@@ -131,7 +131,8 @@
 .cardarea .card {
     width: 300px;
     height: 300px;
-    margin: 1rem;
+    margin-bottom: 5rem;
+    margin-right: 2rem;
 }
 
 .cardarea .card .cardheader {

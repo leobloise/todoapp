@@ -1,5 +1,6 @@
 import ConnectionFactory from './ConnectionFactory.js';
 
+
 export default class TodoappDAO {
     
     constructor() {
@@ -51,6 +52,21 @@ export default class TodoappDAO {
             cursor.onerror = e => {
                 console.log(e);
                 reject(e);
+            }
+        });
+    }
+
+    deleteAllChores() {
+        return new Promise((resolve, reject) => {
+            let request = this._connection.transaction('chore', 'readwrite');
+            let choreObjectStore = request.objectStore('chore');
+
+            let clearRequest = choreObjectStore.clear();
+
+            clearRequest.onsuccess = event => resolve('Apagado com sucesso')
+            clearRequest.onerror = event => {
+                console.log(event.target.result)
+                reject('Não foi possível apagar os resultados')
             }
         });
     }

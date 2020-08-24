@@ -61,9 +61,14 @@ export default class ChoreController {
 
     clearAll(e) {
         e.preventDefault();
-        this._choreCards.removeAllChores();
-        this._msg.text = 'Removidos com sucesso!';
-        this._clearForm();
+        this._todoappdao.deleteAllChores()
+        .then(res => {
+            this._choreCards.removeAllChores();
+            this._msg.text = 'Removidos com sucesso!'
+            this._clearForm();
+        })
+        .catch(err => this._msg.text = err)
+        
     }
 
     _createChore(){

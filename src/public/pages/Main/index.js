@@ -8,7 +8,7 @@ let hideElement = $('.hide');
 let hideMe = $('.hideMe');
 
 let count = 0;
-let cc = new ChoreController();
+let controller = new ChoreController();
 
 activities.forEach(activity => {
 
@@ -20,8 +20,8 @@ activities.forEach(activity => {
 })
 
 
-$('#formchore').addEventListener('submit', cc.RegisterNewChore.bind(cc))
-$('#clear').addEventListener('click', cc.clearAll.bind(cc));
+$('#formchore').addEventListener('submit', controller.RegisterNewChore.bind(controller))
+$('#clear').addEventListener('click', controller.clearAll.bind(controller));
 
 hideElement.addEventListener('click', (e) => {
     if(count == 0) {
