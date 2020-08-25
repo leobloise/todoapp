@@ -18,7 +18,6 @@ class ChoreDAO {
                     console.log(err)
                     return reject('Houve um erro, por favor, contate o adm')
                 }
-                    
                 return resolve(chores)
             })
         });

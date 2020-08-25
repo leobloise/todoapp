@@ -1,7 +1,5 @@
-let connectionIndex;
-
 const request = window.indexedDB.open('todoapp', 1);
-
+let connectionIndex;
 request.onupgradeneeded = e => {
 
     console.log('Criando ou alterando o banco de dados');

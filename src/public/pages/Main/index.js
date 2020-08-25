@@ -1,4 +1,5 @@
 import ChoreController from './controller/ChoreController.js';
+import {HttpRequest} from './service/HttpRequest.js';
 
 const select = $('#activity_select');
 const activities = ['Study', 'Work Out', 'Relax', 'Other'];
@@ -38,3 +39,4 @@ hideElement.addEventListener('click', (e) => {
     count = 0;
     return;
 })
+

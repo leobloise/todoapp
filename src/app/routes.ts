@@ -8,5 +8,8 @@ routes.get('/', (req: Request, res: Response) => {
     res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'))
 })
 
+routes.post('/teste', (req: Request, res: Request) => {
+    console.log(req.body)
+})
 
 export default routes;
