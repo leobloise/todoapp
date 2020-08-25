@@ -11,6 +11,10 @@ routes.get('/', (req: Request, res: Response) => {
     res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'))
 })
 
+routes.get('/getchore' , (req: Request, res: Response) => {
+    
+})
+
 routes.post('/addchore', (req: Request, res: Response) => {
     controller.addChoreToDb(req.body)
     .then(() => {

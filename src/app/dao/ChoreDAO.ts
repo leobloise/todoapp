@@ -9,7 +9,7 @@ class ChoreDAO {
         this.DB = db    
     }
     
-    public AllChores(): Promise<Array<Chore>> {
+    public AllChores(): Promise<Array<string>> {
         return new Promise((resolve, reject) => {
             this.DB.all(`
                 SELECT * FROM chore
@@ -23,7 +23,7 @@ class ChoreDAO {
         });
     }
 
-    public addChore(chores: Chore): Promise<unknown> {
+    public addChore(chores: Chore): Promise<void> {
         
         return new Promise((resolve, reject) => {
             this.DB.run(`
@@ -48,7 +48,6 @@ class ChoreDAO {
             })
         })
     }
-
 
 }
 

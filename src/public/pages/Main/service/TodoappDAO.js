@@ -1,4 +1,5 @@
 import ConnectionFactory from './ConnectionFactory.js';
+import { HttpRequest } from './HttpRequest.js';
 
 
 export default class TodoappDAO {
@@ -32,6 +33,7 @@ export default class TodoappDAO {
     
     getAllChores() {
         return new Promise((resolve, reject) => {
+            // HttpRequest.post()
             let request = this._connection.transaction('chore', 'readwrite')
             let choreObjectStore = request.objectStore('chore');
 
