@@ -9,7 +9,18 @@ class ChoreDAO {
         this.DB = db    
     }
     
-    get AllChores(): Array<Chore> {
-        
+    get AllChores(): Promise<Array<Chore>> {
+        return new Promise((resolve, reject) => {
+            this.DB.all(`
+                SELECT * FROM chore
+            `, (err, chores) => {
+                if(err) {
+                    console.log(err)
+                    return reject('Houve um erro, por favor, contate o adm')
+                }
+                    
+                return resolve(chores)
+            })
+        });
     }
 }
