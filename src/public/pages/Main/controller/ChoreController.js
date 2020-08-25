@@ -27,7 +27,8 @@ export default class ChoreController {
     _initialize() {
         this._todoappdao.getAllChores()
         .then(res => res.map(objecto => JSON.parse(objecto)))
-        .then(res => res.map(objecto => new Chore(objecto._title, objecto._activity,
+        .then(res => res.map(objecto => 
+            new Chore(objecto._title, objecto._activity,
             `${Number(objecto._timeFrom._hour)}:${Number(objecto._timeFrom._minute)}`,
             `${objecto._timeFrom._year}-${objecto._timeFrom._month}-${objecto._timeFrom._day}`,
             `${objecto._timeTo._hour}:${objecto._timeTo._minute}`,
@@ -41,23 +42,26 @@ export default class ChoreController {
         e.preventDefault();
 
         try {
-
             const chore = this._createChore();
             HttpRequest.post('/addchore', this._choreToForm(chore))
-            .then(res => console.log(res))
-            // this._todoappdao.addChoreToDb([chore])
-            // .then(res => {
-            //     this._msg.text = res
-            //     this._choreCards.addChore(chore);
-            //     this._clearForm();
-            // }).catch(err => {
-            //     this._msg.text = err;
-            //     window.scrollTo(0,0);
-            // })
+            .then(err => {
+                if(err) {
+                    console.log('aqui')
+                    return this._showError(err)
+                }
+                return this._todoappdao.addChoreToDb([chore])
+            }).then(res => {
+                this._msg.text = res
+                this._choreCards.addChore(chore);
+                this._clearForm();
+            })
+            .catch(err => {
+                this._showError(err)
+            });
 
-        } catch(e) {
-            console.log(e);
-            this._msg.text = e.message;
+        } catch(error) {
+            console.log(error)
+            this._msg.text = error.message;
             window.scrollTo(0,0);
         }
     }
@@ -73,7 +77,10 @@ export default class ChoreController {
         .catch(err => this._msg.text = err)
         
     }
-
+    _showError(err) {
+        this._msg.text = err;
+        window.scrollTo(0,0);
+    }
     _createChore(){
         return new Chore(this.title.value, this.activity.value,
         this.timeFrom.value, this.timeDayFrom.value,

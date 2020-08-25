@@ -15,6 +15,8 @@ routes.post('/addchore', (req: Request, res: Response) => {
     controller.addChoreToDb(req.body)
     .then(() => {
         res.status(200)
+        .send()
+        .end()
     })
     .catch(err => {
         res.send(err)
