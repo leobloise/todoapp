@@ -7,4 +7,4 @@ Ele utiliza todos os recursos do navegador para promover um verdadeiro todoapp e
 ## Guardar Dados
 Atualmente, a aplicação possui dois bancos de dados: um offline e outro online. Isso foi feito para conseguir aplicar os conhecimentos adquiridos durante a formação front-end da Alura e, também, aplicar os conhecimentos adquiridos de Node JS. Nesse caso, ainda não há todas as possibilidades de CRUD, pois ainda faltam a opção de UPDATE e DELETE de forma única. Contudo, a parte de criar e ler arquivos a partir de um banco de dados offline e também online foi feito com sucesso.
 
-Na próxima aplicação irei trabalhar todo esse conhecimento novamente, mas também irei implementar o CRUD completo e sem a presença de um banco de dados online.
+Na próxima aplicação irei trabalhar todo esse conhecimento novamente, mas também irei implementar o CRUD completo e sem a presença de um banco de dados offline.
