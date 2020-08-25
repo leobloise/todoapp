@@ -5,6 +5,7 @@ import ChoreCards from '../model/ChoreCards.js';
 import CardsView from '../view/CardsView.js';
 import Chore from '../model/Chore.js';
 import TodoappDAO from '../service/TodoappDAO.js';
+import { HttpRequest } from '../service/HttpRequest.js';
 
 export default class ChoreController {
 
@@ -42,15 +43,16 @@ export default class ChoreController {
         try {
 
             const chore = this._createChore();
-            this._todoappdao.addChoreToDb([chore])
-            .then(res => {
-                this._msg.text = res
-                this._choreCards.addChore(chore);
-                this._clearForm();
-            }).catch(err => {
-                this._msg.text = err;
-                window.scrollTo(0,0);
-            })
+            HttpRequest.post('/addchore', this._choreToForm(chore))
+            // this._todoappdao.addChoreToDb([chore])
+            // .then(res => {
+            //     this._msg.text = res
+            //     this._choreCards.addChore(chore);
+            //     this._clearForm();
+            // }).catch(err => {
+            //     this._msg.text = err;
+            //     window.scrollTo(0,0);
+            // })
 
         } catch(e) {
             console.log(e);
@@ -77,6 +79,10 @@ export default class ChoreController {
         this.timeTo.value, 
         this.timeDayTo.value, 
         this.description.value)
+    }
+
+    _choreToForm(chore) {
+        return `title=${chore.title}&activity=${chore.description}&timefrom=${JSON.stringify(chore._timeFrom)}&timeto=${JSON.stringify(chore._timeTo)}&description=${chore.description}`
     }
 
     _clearForm() {

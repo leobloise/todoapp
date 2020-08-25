@@ -9,7 +9,7 @@ class ChoreDAO {
         this.DB = db    
     }
     
-    get AllChores(): Promise<Array<Chore>> {
+    public AllChores(): Promise<Array<Chore>> {
         return new Promise((resolve, reject) => {
             this.DB.all(`
                 SELECT * FROM chore
@@ -22,4 +22,34 @@ class ChoreDAO {
             })
         });
     }
+
+    public addChore(chores: Chore): Promise<unknown> {
+        
+        return new Promise((resolve, reject) => {
+            this.DB.run(`
+                INSERT INTO chore
+                (id, title, activity, timefrom, timeto, description)
+                VALUES('', ?, ?, ?, ?)
+            `, 
+            [
+                chores.title,
+                chores.activity,
+                chores.timeFROM,
+                chores.timeTO,
+                chores.description
+            ],
+            (err) => {
+                if(err) {
+                    console.log(err)
+                    return reject('Não foi possível inserir essa atividade')
+                }
+
+                return resolve()
+            })
+        })
+    }
+
+
 }
+
+export default ChoreDAO;

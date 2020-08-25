@@ -3,3 +3,5 @@ abstract class StringUtils {
         return string.split(delimiter);
     }
 }
+
+export default StringUtils

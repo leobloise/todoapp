@@ -1,4 +1,5 @@
 import Time from './Time';
+import StringUtils from '../services/StringUtils'
 
 export default class Chore {
 
@@ -8,7 +9,7 @@ export default class Chore {
         private _activity: string
         private _description: string
 
-        constructor(temptitle: string, activity: string, timeFrom: string, timeDayFrom: string, timeTo: string, timeDayTo: string, description: string) {
+        constructor(temptitle: string, timeFrom: string, timeDayFrom: string, timeTo: string, timeDayTo: string,activity?: string, description?: string) {
             this._title = this._verifyTitle(temptitle);
             this._activity = activity || 'Nulo';
             this._description = description || 'Nulo';
