@@ -39,4 +39,3 @@ hideElement.addEventListener('click', (e) => {
     count = 0;
     return;
 })
-
