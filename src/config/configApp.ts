@@ -9,6 +9,4 @@ const app: Application = express()
                             extended: true
                         }))
                         .use(routes)
-
-
 export default app; 
