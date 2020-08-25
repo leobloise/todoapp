@@ -67,16 +67,23 @@ export default class TodoappDAO {
 
     deleteAllChores() {
         return new Promise((resolve, reject) => {
-            let request = this._connection.transaction('chore', 'readwrite');
-            let choreObjectStore = request.objectStore('chore');
+            HttpRequest.delete('/delete')
+            .then(res => {
+                if(res)
+                    return reject(res)
+                else {
+                    let request = this._connection.transaction('chore', 'readwrite');
+                    let choreObjectStore = request.objectStore('chore');
 
-            let clearRequest = choreObjectStore.clear();
+                    let clearRequest = choreObjectStore.clear();
 
-            clearRequest.onsuccess = event => resolve('Apagado com sucesso')
-            clearRequest.onerror = event => {
-                console.log(event.target.result)
-                reject('Não foi possível apagar os resultados')
-            }
+                    clearRequest.onsuccess = event => resolve('Apagado com sucesso')
+                    clearRequest.onerror = event => {
+                        console.log(event.target.result)
+                        reject('Não foi possível apagar os resultados')
+                    }
+                }
+            })
         });
     }
 

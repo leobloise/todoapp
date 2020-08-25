@@ -48,6 +48,22 @@ export class HttpRequest {
     }
 
     static delete(url) {
-        //terminar isso aqui depois
+        
+        return new Promise((resolve, reject) => {
+            let xml = new XMLHttpRequest()
+
+            xml.open('DELETE', url)
+
+            xml.onreadystatechange = e => {
+                if(xml.readyState === 4) {
+                    if(xml.status === 200)
+                        return resolve(xml.responseText)
+                    else
+                        return reject('A requisição não foi bem sucedida');
+                }
+            }
+
+            xml.send();
+        })
     }
 }

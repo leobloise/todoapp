@@ -3,7 +3,7 @@ import Time from '../model/Time.js';
 
 export default class Chore {
 
-        constructor(temptitle, activity, timeFrom, timeDayFrom, timeTo, timeDayTo, description) {
+        constructor(id,temptitle, activity, timeFrom, timeDayFrom, timeTo, timeDayTo, description) {
             this._timeTo;
             this._timeFrom;
             this._title = this._verifyTitle(temptitle);

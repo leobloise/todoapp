@@ -52,7 +52,7 @@ class ChoreDAO {
     public deleteAll() {
         return new Promise((resolve, reject) => {
             this.DB.run(`
-                DELETE * FROM chore
+                DELETE FROM chore
             `, err => {
                 if(err) {
                     console.log(err)

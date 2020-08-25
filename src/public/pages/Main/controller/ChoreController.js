@@ -10,7 +10,6 @@ import { HttpRequest } from '../service/HttpRequest.js';
 export default class ChoreController {
 
     constructor() {
-
         this.title = $('#title');
         this.activity = $('#activity_select');
         this.timeFrom = $('#timeFrom');

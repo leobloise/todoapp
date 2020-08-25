@@ -9,6 +9,7 @@ export default class CardsView extends View{
         
         return models.chores.map(model => `
         <section class="card">
+                        <input type="hidden" id="chore_id" value = "${model.id}"/> 
                         <header class="cardheader">
                             <div class="cardheader_content">
                                 <h1> ${model.title} </h1>
