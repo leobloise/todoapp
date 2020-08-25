@@ -1,25 +1,7 @@
 import ChoreDAO from '../dao/ChoreDAO';
 import { Database } from 'sqlite3';
-import Time from '../models/Time';
 import Chore from '../models/Chore';
-import { time } from 'console';
-
-
-// interface Chore {
-//     title: string
-//     activity?: string
-//     timefrom: string
-//     timeto: string
-//     description?: string
-// }
-
-interface BodyChoreRequisition extends Body {
-    title: string
-    activity?: string
-    timefrom: string
-    timeto: string
-    description?: string
-}
+import BodyChoreRequisition from '../interfaces/BodyChoreRequisition';
 
 class ChoreControllers  {
     
@@ -30,23 +12,17 @@ class ChoreControllers  {
     }
 
     public addChoreToDb(body: BodyChoreRequisition) {
-
         return new Promise((resolve, reject) => {
             try {
-
                 const chore = this.justCreateAndReturnChorePls(body)
-                
                 this.choredao.addChore(chore)
                 .then(() => resolve())
                 .catch(err => reject(err))
-    
             } catch(e) {
                 console.log(e)
                 return reject('Não foi possível inserir a atividade, por favor, verifique os dados')
             }
-        })
-        
-        
+        })  
     }
 
     public getAllChores() {
@@ -58,7 +34,15 @@ class ChoreControllers  {
         });
     }
 
+    public deleteAllChores() {
+        return new Promise((resolve, reject) => {
+            this.choredao.deleteAll()
+            .then(()=> resolve())
+            .catch(err => reject(err))
+        })
+    }
 
+    //Preciso refatorar isso aqui pq meu deus que medo
     private createChoreFromDB(chore: any) {
         const {title, activity, timefrom, timeto, description} = chore
         const timeFrom = JSON.parse(timefrom);

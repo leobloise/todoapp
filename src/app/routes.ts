@@ -35,4 +35,17 @@ routes.post('/addchore', (req: Request, res: Response) => {
     })
 })
 
+routes.delete('/delete', (req: Request, res: Response) => {
+    controller.deleteAllChores()
+    .then(() => {
+        res.status(200)
+        .send()
+        .end()
+    })
+    .catch(err => {
+        res.status(200)
+        .send(err)
+    })
+})
+
 export default routes;

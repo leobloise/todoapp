@@ -46,4 +46,8 @@ export class HttpRequest {
         
         })
     }
+
+    static delete(url) {
+        //terminar isso aqui depois
+    }
 }

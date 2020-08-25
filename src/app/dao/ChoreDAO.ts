@@ -49,6 +49,20 @@ class ChoreDAO {
         })
     }
 
+    public deleteAll() {
+        return new Promise((resolve, reject) => {
+            this.DB.run(`
+                DELETE * FROM chore
+            `, err => {
+                if(err) {
+                    console.log(err)
+                    return reject('Não foi possível deletar')
+                }
+                resolve();
+            })
+        })
+    }
+
 }
 
 export default ChoreDAO;
