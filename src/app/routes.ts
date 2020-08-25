@@ -12,7 +12,15 @@ routes.get('/', (req: Request, res: Response) => {
 })
 
 routes.get('/getchore' , (req: Request, res: Response) => {
-    
+    controller.getAllChores()
+    .then(chores => {
+        res.status(200)
+        .send(JSON.stringify(chores))
+    })
+    .catch(err => {
+        res.status(200)
+        .send(err)
+    })
 })
 
 routes.post('/addchore', (req: Request, res: Response) => {

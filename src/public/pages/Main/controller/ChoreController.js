@@ -26,15 +26,17 @@ export default class ChoreController {
 
     _initialize() {
         this._todoappdao.getAllChores()
-        .then(res => res.map(objecto => JSON.parse(objecto)))
         .then(res => res.map(objecto => 
             new Chore(objecto._title, objecto._activity,
             `${Number(objecto._timeFrom._hour)}:${Number(objecto._timeFrom._minute)}`,
             `${objecto._timeFrom._year}-${objecto._timeFrom._month}-${objecto._timeFrom._day}`,
             `${objecto._timeTo._hour}:${objecto._timeTo._minute}`,
             `${objecto._timeTo._year}-${objecto._timeTo._month}-${objecto._timeTo._day}`,
-            objecto._description)))
-        .then(res => res.forEach(chore => this._choreCards.addChore(chore)))
+            objecto._description))
+        )
+        .then(res => {
+            res.forEach(chore => this._choreCards.addChore(chore))
+        })
     }
 
     RegisterNewChore(e) {

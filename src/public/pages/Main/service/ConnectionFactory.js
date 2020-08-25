@@ -16,8 +16,7 @@ request.onupgradeneeded = e => {
 
 request.onsuccess = e => {
     console.log('Conexão foi um sucesso')
-    connectionIndex = e.target.result
-    console.log(connectionIndex)
+    connectionIndex = e.target.result;
 }
 
 request.onerror = e => {

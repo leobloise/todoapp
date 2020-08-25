@@ -4,6 +4,15 @@ import Time from '../models/Time';
 import Chore from '../models/Chore';
 import { time } from 'console';
 
+
+// interface Chore {
+//     title: string
+//     activity?: string
+//     timefrom: string
+//     timeto: string
+//     description?: string
+// }
+
 interface BodyChoreRequisition extends Body {
     title: string
     activity?: string
@@ -25,17 +34,8 @@ class ChoreControllers  {
         return new Promise((resolve, reject) => {
             try {
 
-                const {title, activity, timefrom, timeto, description} = body;
-                const timeFrom = JSON.parse(timefrom);
-                const timeTo = JSON.parse(timeto);
-    
-                const chore = new Chore(title, `${timeFrom._hour}:${timeFrom._minute}`,
-                `${timeFrom._year}-${timeFrom._month}-${timeFrom._day}`,
-                `${timeTo._hour}:${timeTo._minute}`,
-                `${timeTo._year}-${timeTo._month}-${timeTo._day}`,
-                activity,
-                description)
-
+                const chore = this.justCreateAndReturnChorePls(body)
+                
                 this.choredao.addChore(chore)
                 .then(() => resolve())
                 .catch(err => reject(err))
@@ -52,10 +52,53 @@ class ChoreControllers  {
     public getAllChores() {
         return new Promise((resolve, reject) => {
             this.choredao.AllChores()
-            .then(chores => {
-                
-            })
+            .then(chores => chores.map(chore => this.createChoreFromDB(chore)))
+            .then(chores => resolve((chores)))
+            .catch(err => reject(err))
         });
+    }
+
+
+    private createChoreFromDB(chore: any) {
+        const {title, activity, timefrom, timeto, description} = chore
+        const timeFrom = JSON.parse(timefrom);
+        const timeTo = JSON.parse(timeto);
+
+        return this.createChore(title, `${timeFrom._hour}:${timeFrom._minute}`,
+                `${timeFrom._year}-${timeFrom._month}-${timeFrom._day}`,
+                `${timeTo._hour}:${timeTo._minute}`,
+                `${timeTo._year}-${timeTo._month}-${timeTo._day}`,
+                activity,
+                description)
+    }
+
+    private justCreateAndReturnChorePls(body: BodyChoreRequisition) {
+        const {title, activity, timefrom, timeto, description} = body;
+        const timeFrom = JSON.parse(timefrom);
+        const timeTo = JSON.parse(timeto);
+
+        return this.createChore(title, `${timeFrom._hour}:${timeFrom._minute}`,
+                `${timeFrom._year}-${timeFrom._month}-${timeFrom._day}`,
+                `${timeTo._hour}:${timeTo._minute}`,
+                `${timeTo._year}-${timeTo._month}-${timeTo._day}`,
+                activity,
+                description)
+    }
+
+    private createChore(title: string,
+        timeFrom: string, 
+        timeDayFrom: string, 
+        timeTo: string, 
+        timeDayTo: string,
+        activity?: string, 
+        description?: string)  {
+
+        return new Chore(title,
+            timeFrom, timeDayFrom,
+            timeTo, 
+            timeDayTo,
+            activity, 
+            description)
     }
 
 }

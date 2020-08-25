@@ -33,28 +33,35 @@ export default class TodoappDAO {
     
     getAllChores() {
         return new Promise((resolve, reject) => {
-            // HttpRequest.post()
-            let request = this._connection.transaction('chore', 'readwrite')
-            let choreObjectStore = request.objectStore('chore');
-
-            let cursor = choreObjectStore.openCursor();
-            let chores = [];
-
-            cursor.onsuccess = e => {
-                const atual = e.target.result
+            HttpRequest.get('/getchore')
+            .then(choresFromDb => {
+                let chores = [];
+                JSON.parse(choresFromDb).forEach(chore => chores.push(chore))
                 
-                if(atual){
-                    chores.push(atual.value)
-                    atual.continue();
-                } else {
-                    resolve(chores);
+                let request = this._connection.transaction('chore', 'readwrite')
+                let choreObjectStore = request.objectStore('chore');
+    
+                let cursor = choreObjectStore.openCursor();
+    
+                cursor.onsuccess = e => {
+                    const atual = e.target.result
+                    
+                    if(atual){
+                        chores.push(JSON.parse(atual.value))
+                        atual.continue();
+                    } else {
+                        resolve(chores);
+                    }
+                
                 }
-            
-            }
-            cursor.onerror = e => {
-                console.log(e);
-                reject(e);
-            }
+
+                cursor.onerror = e => {
+                    console.log(e);
+                    reject(e);
+                }
+            })
+            .catch(err => reject(err))
+           
         });
     }
 

@@ -16,13 +16,34 @@ export class HttpRequest {
                     if(xml.status === 200) 
                         return resolve(xml.responseText);
                     else 
-                        return reject('Houve um erro na comunicação com o servidor')
+                        return reject('A requisição não foi bem sucedida');
                 }
             }
 
             xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
             xml.send(content)
             
+        })
+    }
+    
+    static get(url) {
+        return new Promise((resolve, reject) => {
+            
+            let xml = new XMLHttpRequest();
+            
+            xml.open('GET', url)
+
+            xml.onreadystatechange = (e) => {
+                if(xml.readyState === 4) {
+                    if(xml.status === 200) 
+                        return resolve(xml.responseText)
+                    else 
+                        return reject('A requisição não foi bem sucedida');
+                }
+            }
+
+            xml.send();
+        
         })
     }
 }
