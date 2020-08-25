@@ -11,8 +11,14 @@ routes.get('/', (req: Request, res: Response) => {
     res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'))
 })
 
-routes.post('/addchore', (req: Request, res: Request) => {
+routes.post('/addchore', (req: Request, res: Response) => {
     controller.addChoreToDb(req.body)
+    .then(() => {
+        res.status(200)
+    })
+    .catch(err => {
+        res.send(err)
+    })
 })
 
 export default routes;

@@ -28,14 +28,14 @@ class ChoreDAO {
         return new Promise((resolve, reject) => {
             this.DB.run(`
                 INSERT INTO chore
-                (id, title, activity, timefrom, timeto, description)
-                VALUES('', ?, ?, ?, ?)
+                (title, activity, timefrom, timeto, description)
+                VALUES(?,?, ?, ?, ?)
             `, 
             [
                 chores.title,
                 chores.activity,
-                chores.timeFROM,
-                chores.timeTO,
+                JSON.stringify(chores.timeFROM),
+                JSON.stringify(chores.timeTO),
                 chores.description
             ],
             (err) => {

@@ -44,6 +44,7 @@ export default class ChoreController {
 
             const chore = this._createChore();
             HttpRequest.post('/addchore', this._choreToForm(chore))
+            .then(res => console.log(res))
             // this._todoappdao.addChoreToDb([chore])
             // .then(res => {
             //     this._msg.text = res
@@ -82,7 +83,7 @@ export default class ChoreController {
     }
 
     _choreToForm(chore) {
-        return `title=${chore.title}&activity=${chore.description}&timefrom=${JSON.stringify(chore._timeFrom)}&timeto=${JSON.stringify(chore._timeTo)}&description=${chore.description}`
+        return `title=${chore.title}&activity=${chore.activity}&timefrom=${JSON.stringify(chore._timeFrom)}&timeto=${JSON.stringify(chore._timeTo)}&description=${chore.description}`
     }
 
     _clearForm() {

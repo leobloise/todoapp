@@ -7,7 +7,7 @@ const DB = new Database('database.db')
 DB.serialize(()=>{
     DB.run(`
         CREATE TABLE IF NOT EXISTS chore(
-            id SMALLINT PRIMARY KEY NOT NULL,
+            id  INTEGER PRIMARY KEY AUTOINCREMENT ,
             title VARCHAR(255) NOT NULL,
             activity VARCHAR(255),
             timefrom TEXT NOT NULL,

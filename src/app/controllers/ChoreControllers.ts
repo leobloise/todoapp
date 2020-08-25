@@ -24,17 +24,21 @@ class ChoreControllers  {
 
         return new Promise((resolve, reject) => {
             try {
-                const {title, activity, timefrom, timeto,description} = body;
+
+                const {title, activity, timefrom, timeto, description} = body;
                 const timeFrom = JSON.parse(timefrom);
                 const timeTo = JSON.parse(timeto);
     
                 const chore = new Chore(title, `${timeFrom._hour}:${timeFrom._minute}`,
                 `${timeFrom._year}-${timeFrom._month}-${timeFrom._day}`,
                 `${timeTo._hour}:${timeTo._minute}`,
-                `${timeTo._year}-${timeTo._month}-${timeTo._day}`,activity,
+                `${timeTo._year}-${timeTo._month}-${timeTo._day}`,
+                activity,
                 description)
-    
-                
+
+                this.choredao.addChore(chore)
+                .then(() => resolve())
+                .catch(err => reject(err))
     
             } catch(e) {
                 console.log(e)
